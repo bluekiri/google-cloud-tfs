@@ -1,0 +1,85 @@
+﻿{
+  "$schema": "https://aka.ms/vsts-tasks.schema.json",
+  "id": "951d9df2-d422-4852-8f3a-2519b41819f0",
+  "name": "gsutil-build-task",
+  "friendlyName": "Google Cloud GSUtil Task",
+  "author": "Jordi Oliver",
+  "description": "Executes GSUtil commands.",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
+  },
+  "instanceNameFormat": "gsutil $(command)",
+  "category": "Utility",
+  "visibility": [ "Build", "Release" ],
+  "demands": [],
+  "groups": [
+    {
+      "name": "advanced",
+      "displayName": "Advanced",
+      "isExpanded": false,
+      "tags": []
+    }
+  ],
+  "inputs": [
+    {
+      "name": "serviceEndpoint",
+      "label": "GCP connection",
+      "type": "connectedService:GoogleCloudServiceEndpoint",
+      "required": true,
+      "helpMarkDown": "The Google Cloud Platform connection to use."
+    },
+    {
+      "name": "command",
+      "label": "Command",
+      "type": "pickList",
+      "required": true,
+      "helpMarkDown": "The GSUtil command to run.",
+      "options": {
+        "cp": "cp",
+        "mv": "mv"
+      },
+      "properties": {
+        "editableOptions": "False"
+      }
+    },
+    {
+      "name": "sourceUrl",
+      "type": "string",
+      "label": "Source",
+      "helpMarkDown": "The source url. Might be a GCS URL or a local file/directory",
+      "required": true,
+      "visibleRule": "command = cp || command = mv"
+    },
+    {
+      "name": "destinationUrl",
+      "type": "string",
+      "label": "Destination",
+      "helpMarkDown": "The destination url. Might be a GCS URL or a local file/directory",
+      "required": true,
+      "visibleRule": "command = cp || command = mv"
+    },
+    {
+      "name": "parallel",
+      "type": "boolean",
+      "label": "Parallel processing",
+      "helpMarkDown": "Processes the copy or move task in parallel by adding the -m flag to the gsutil command execution.",
+      "defaultValue": false,
+      "required": false,
+      "visibleRule": "command = cp || command = mv"
+    },
+    {
+      "name": "options",
+      "type": "string",
+      "label": "Options",
+      "helpMarkDown": "Additional options for the command to execute",
+      "required": false
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "gsutil-build.js"
+    }
+  }
+}
