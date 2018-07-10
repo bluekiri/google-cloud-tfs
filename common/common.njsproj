@@ -9,6 +9,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -32,14 +33,10 @@
       NpmPack;
     </BuildDependsOn>
   </PropertyGroup>
-  <Target Name="NpmInstall"
-          Inputs="package.json"
-          Outputs="node_modules\">
+  <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules\">
     <Exec Command="npm install" WorkingDirectory="$(MSBuildProjectDirectory)" />
   </Target>
-  <Target Name="NpmPack"
-          Inputs="@(ConfigFile);@(TypeScriptCompile)"
-          Outputs="$(OutputPath)\common-0.0.1.tgz">
-    <Exec Command="npm pack $(MSBuildProjectDirectory)" WorkingDirectory="$(OutputPath)"/>
+  <Target Name="NpmPack" Inputs="@(ConfigFile);@(TypeScriptCompile)" Outputs="$(OutputPath)\common-0.0.2.tgz">
+    <Exec Command="npm pack $(MSBuildProjectDirectory)" WorkingDirectory="$(OutputPath)" />
   </Target>
 </Project>

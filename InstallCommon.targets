@@ -7,9 +7,9 @@
     </BuildDependsOn>
   </PropertyGroup>
   <Target Name="NpmInstallCommon"
-          Inputs="$(MSBuildThisFileDirectory)\common\bin\common-0.0.1.tgz"
+          Inputs="$(MSBuildThisFileDirectory)\common\bin\common-0.0.2.tgz"
           Outputs="$(MSBuildProjectDirectory)\node_modules\common\">
-    <Exec Command="npm install ..\common\bin\common-0.0.1.tgz"
+    <Exec Command="npm install ..\common\bin\common-0.0.2.tgz"
           WorkingDirectory="$(MSBuildProjectDirectory)"/>
   </Target>
   <Target Name="NpmInstall"
