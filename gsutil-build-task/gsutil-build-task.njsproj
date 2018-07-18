@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <TypeScriptCompile Include="gsutil-build.ts" />
+    <Content Include="manifest.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="task.json">
