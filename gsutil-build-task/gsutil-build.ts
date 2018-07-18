@@ -23,8 +23,8 @@ async function run(): Promise<void> {
 		.line(`-o Credentials:gs_service_key_file=${Endpoint.jsonKeyFilePath}`)
 		.arg(command)
 		.line(extraOptions)
-		.arg(sourceUrl)
-		.arg(destinationUrl);
+		.argIf(isMoveOrCopyCommand, sourceUrl)
+		.argIf(isMoveOrCopyCommand, destinationUrl);
 
 	const execOptions: IExecOptions = getQuietExecOptions();
 
