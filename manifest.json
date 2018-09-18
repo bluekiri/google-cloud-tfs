@@ -3,7 +3,7 @@
   "manifestVersion": 1,
   "id": "google-cloud-tfs",
   "name": "Cloud Tools for TFS",
-  "version": "0.0.9",
+  "version": "0.0.12",
   "publisher": "GoogleCloudTools",
   "targets": [ { "id": "Microsoft.VisualStudio.Services" } ],
   "description": "Tools for deploying to Google Cloud Platform.",
@@ -42,8 +42,7 @@
   "links": {
     "license": {
       "uri": "https://github.com/GoogleCloudPlatform/google-cloud-tfs/blob/master/LICENSE"
-    },
-    "$todo(przybjw)": "Update to real values.",
+    },    
     "getstarted": {
       "uri": "https://cloud.google.com/tools/tfs/docs/quickstart"
     },

@@ -43,4 +43,14 @@ describe('gsutil build task', () => {
 			});
 		}
 	});
+
+	describe('missing non-required parameters', () => {
+		it('should not fail when parallel is missing', () => {
+			const testPath = path.join(__dirname, 'missing-parallel.js');
+			runner = new MockTestRunner(testPath);
+			runner.run();
+
+			gcloudAssert.assertGcloudSilentSuccess(runner);
+		});
+	});
 });

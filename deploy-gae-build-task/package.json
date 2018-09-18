@@ -6,7 +6,7 @@
   "author": "Google Cloud Tools",
   "repository": "https://github.com/GoogleCloudPlatform/google-cloud-tfs.git",
   "dependencies": {
-    "common": "file:../common/bin/common-0.0.1.tgz",
+    "common": "file:../common/bin/common-0.0.2.tgz",
     "js-yaml": "^3.8.2",
     "vsts-task-lib": "^2.1.0"
   },

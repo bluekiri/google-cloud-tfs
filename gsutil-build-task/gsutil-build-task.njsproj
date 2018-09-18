@@ -47,6 +47,9 @@
     <TypeScriptCompile Include="test\missing-destination-url.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="test\missing-parallel.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="test\missing-service-endpoint.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

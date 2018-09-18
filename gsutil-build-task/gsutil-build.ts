@@ -1,4 +1,4 @@
-﻿import { Endpoint, getQuietExecOptions } from 'common/exec-options';
+﻿import { Endpoint, getDefaultExecOptions } from 'common/exec-options';
 import * as task from 'vsts-task-lib/task';
 import { catchAll } from 'common/handle-rejection';
 import { IExecOptions } from 'vsts-task-lib/toolrunner';
@@ -18,15 +18,18 @@ async function run(): Promise<void> {
 
 	const endpoint = new Endpoint(endpointId);
 	
-	const gsutil = task.tool(gsutilPath)
+	var gsutil = task.tool(gsutilPath)
 		.argIf(enableParallelProcessing, '-m')
 		.line(`-o Credentials:gs_service_key_file=${Endpoint.jsonKeyFilePath}`)
-		.arg(command)
-		.line(extraOptions)
-		.argIf(isMoveOrCopyCommand, sourceUrl)
+		.arg(command);
+
+	if (extraOptions != null && extraOptions.length > 0)
+		gsutil = gsutil.line(extraOptions);
+
+	gsutil = gsutil.argIf(isMoveOrCopyCommand, sourceUrl)
 		.argIf(isMoveOrCopyCommand, destinationUrl);
 
-	const execOptions: IExecOptions = getQuietExecOptions();
+	const execOptions: IExecOptions = getDefaultExecOptions();
 
 	await endpoint.usingAsync(async () => {
 		await gsutil.exec(execOptions);

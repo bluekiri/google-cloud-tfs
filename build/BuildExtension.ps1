@@ -20,6 +20,7 @@ Param(
     [switch]$SkipInit,
     [switch]$SkipCompile,
     [switch]$SkipTest,
+	[switch]$SkipPackage,
     [string]$Publisher,
     [string]$Version
 )

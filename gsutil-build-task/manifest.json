@@ -11,7 +11,7 @@
   ],
   "files": [
     {
-      "path": "gsutil-build-task.js"
+      "path": "gsutil-build.js"
     },
     {
       "path": "task.json"
