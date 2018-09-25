@@ -149,7 +149,7 @@ export class Endpoint {
    * The project id as a gcloud parameter.
    * @returns {string} --project="projectId"
    */
-  get projectParam(): string { return `--project="${this.projectId}"`; }
+  get projectParam(): string { return `--project=${this.projectId}`; }
 }
 
 /**

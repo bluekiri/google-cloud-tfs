@@ -28,7 +28,7 @@ export const jsonKeyFilePath = path.resolve('tempKeyFile.json');
  * The json key file path as a gcloud parameter.
  */
 export const credentialParam =
-    `--credential-file-override="${jsonKeyFilePath}"`;
+    `--credential-file-override=${jsonKeyFilePath}`;
 
 /**
  * The path to the kubernetes config file.
